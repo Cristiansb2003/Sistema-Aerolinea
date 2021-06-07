@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Vuelos Alta</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/template.xhtml">
+            <ui:define name="top">
+                <h1>Agregar Vuelos</h1> 
+            </ui:define>
+            <ui:define name="izquierda">
+
+                <label>Numero de Vuelo</label><br/>
+                <h:inputText value="#{vuelosController.vuelos.numeroVuelos}" validator="numerosValidator" required="true" requiredMessage=" el campo Numero de Vuelo no puede ser nulo o estar vacío" maxlength="20"/>
+                <br/><br/>
+
+                <label>Numero de Pasajeros</label><br/>
+                <h:inputText value="#{vuelosController.vuelos.numeroPasajeros}" validator="numerosValidator" required="true" requiredMessage="Es necesario llenar el campo Numero de Pasajeros"/>
+                <br/><br/>
+
+                <label>Fecha de Inicio</label><br/>
+                <p:datePicker pattern = "dd/MM/yyyy" value = "#{vuelosController.vuelos.fechaInicio}" required="true" requiredMessage="Es necesario llenar el campo Fecha Inicio"/>
+
+            </ui:define>
+            <ui:define name="centro">
+
+                <label>Fecha de Fin</label><br/>
+                <p:datePicker pattern = "dd/MM/yyyy" value = "#{vuelosController.vuelos.fechaFin}" required="true" requiredMessage="Es necesario llenar el campo Fecha Fin"/>
+                <br/><br/>
+
+                <label>Hora de Inicio</label><br/>
+                <p:datePicker timeOnly="true" pattern="hh:mm" value = "#{vuelosController.vuelos.horaInicio}" required="true" requiredMessage="Es necesario llenar el campo Hora Inicio"/>
+                <br/><br/>
+
+                <label>Hora Fin</label><br/>
+                <p:datePicker timeOnly="true" pattern="hh:mm" value = "#{vuelosController.vuelos.horaFin}" required="true" requiredMessage="Es necesario llenar el campo Hora Fin"/>
+            </ui:define>
+            <ui:define name="derecha">
+                <h:selectOneMenu value="#{vuelosController.vuelos.numeroAvionV}"
+                                 required="true"
+                                 requiredMessage="El numero de Avion es requerido">
+                    <f:selectItem itemLabel = "Selecciona un numero de Avion"
+                                  noSelectionOption="true"
+                                  itemValue="0"/>
+                    <f:selectItems value="#{avionesController.findAll()}"
+                                   var = "a"
+                                   itemLabel="#{a.numeroAvion}"/>
+                </h:selectOneMenu>
+                <br/><br/>
+                <h:selectOneMenu value="#{vuelosController.vuelos.origen}"
+                                 required="true"
+                                 requiredMessage="El origen es requerido">
+                    <f:selectItem itemLabel = "Selecciona un origen"
+                                  noSelectionOption="true"
+                                  itemValue="0"/>
+                    <f:selectItems value="#{ciudadesController.findAll()}"
+                                   var = "c"
+                                   itemLabel="#{c.nombre}"/>
+                </h:selectOneMenu>
+                <br/><br/>
+                <h:selectOneMenu value="#{vuelosController.vuelos.destino}"
+                                 required="true"
+                                 requiredMessage="El destino es requerido">
+                    <f:selectItem itemLabel = "Selecciona un destino"
+                                  noSelectionOption="true"
+                                  itemValue="0"/>
+                    <f:selectItems value="#{ciudadesController.findAll()}"
+                                   var = "c"
+                                   itemLabel="#{c.nombre}"/>
+                </h:selectOneMenu>
+            </ui:define>
+            <ui:define name="agregar">
+                <p:commandButton action = "#{vuelosController.insert()}" onclick="PF('wdialog').show;" value="Agregar"/>
+                <p:commandButton value="Regresar" immediate="true" action="/menu/menuPrincipal"/> 
+            </ui:define>
+
+            <ui:define name="msj">
+                <h:messages/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

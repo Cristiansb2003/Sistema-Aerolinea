@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Paises Edit</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/template.xhtml">
+            <ui:define name="top">
+                <h1> Editar Pais</h1>
+            </ui:define>
+            <ui:define name="izquierda">
+                
+                <label>Nombre</label><br/>
+                <h:inputText value="#{paisesController.paises.nombre}" validator="nombresValidator" required="true" requiredMessage="El campo Nombre no puede ser nulo o estar vacío" maxlength="35"/>
+            </ui:define>
+            <ui:define name="agregar">
+                <p:commandButton value="Guardar" action = "#{paisesController.update()}" onclick="PF('recargar').show()"/>
+                <p:commandButton value="Regresar" immediate="true" action="/menu/menuPrincipal"/> 
+            </ui:define>
+
+            <ui:define name="msj">
+                <h:messages/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Aviones Alta</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/template.xhtml">
+            <ui:define name="top">
+                <h1>Agregar Avion</h1>
+            </ui:define>
+            <ui:define name="izquierda">
+               
+                <label>Numero de Avion</label><br/>
+                <h:inputText value="#{avionesController.aviones.numeroAvion}" validator="numerosValidator" required="true" requiredMessage="El campo Numero de Avion no puede ser nulo o estar vacío" maxlength="20"/><br/><br/>
+                
+                <label>Capacidad de Pasajeros</label><br/>
+                <h:inputText value="#{avionesController.aviones.capacidadPasajeros}" validator="numerosValidator" required="true" requiredMessage="Es necesario llenar el campo Capacidad de Pasajeros"/><br/>
+            </ui:define>
+            <ui:define name="centro">
+                
+                <label>Modelo</label><br/>
+                <h:inputText value="#{avionesController.aviones.modelo}" validator="codigoValidator" required="true" requiredMessage="El campo Modelo no puede ser nulo o estar vacío" maxlength="25"/><br/><br/>
+                
+                <label>Aerolinea</label><br/>
+                <h:inputText value="#{avionesController.aviones.aerolinea}" validator="palabrasValidator" required="true" requiredMessage="El campo Aerolinea no puede ser nulo o estar vacío" maxlength="35"/><br/>
+            </ui:define>
+            <ui:define name="agregar">
+                <p:commandButton value="Agregar Nuevo" onclick="PF('recargar').show()" action = "#{avionesController.insert()}"/>
+                <p:commandButton value="Regresar" immediate="true" action="/menu/menuPrincipal"/> 
+            </ui:define>
+
+            <ui:define name="msj">
+                <h:messages/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

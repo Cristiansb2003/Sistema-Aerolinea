@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Vuelos List</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/tableTample.xhtml">
+            <ui:define name="top">
+                <h1>Vuelos</h1>
+            </ui:define>
+            <ui:define name="mensajes">
+                <h:messages/>
+            </ui:define>
+            <ui:define name="centro">
+                <h:dataTable value="#{vuelosController.findAll()}" var="V">
+                    <h:column>
+                        <f:facet name="header">Numero de Vuelo</f:facet>
+                            #{V.numeroVuelos}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Numero de Avion</f:facet>
+                            #{V.numeroAvionV.numeroAvion}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Origen</f:facet>
+                            #{V.origen.nombre}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Destino</f:facet>
+                            #{V.destino.nombre}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Fecha de Inicio</f:facet>
+                        <h:outputText value="#{V.fechaInicio}">
+                            <f:convertDateTime type = "Date" pattern ="dd/MM/yyyy" timeZone="GTM-5"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Fecha de Fin</f:facet>
+                        <h:outputText value="#{V.fechaFin}">
+                            <f:convertDateTime type = "Date" pattern ="dd/MM/yyyy" timeZone="GTM-5"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Hora de Inicio</f:facet>
+                        <h:outputText value="#{V.horaInicio}">
+                            <f:convertDateTime type="time" pattern="HH:mm" timeZone="GMT-6"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Hora de Fin</f:facet>
+                        <h:outputText value="#{V.horaFin}">
+                            <f:convertDateTime type="time" pattern="HH:mm" timeZone="GMT-6"/>
+                        </h:outputText>
+                    </h:column>
+
+                </h:dataTable>
+            </ui:define>
+            <ui:define name="botones">
+                <p:commandButton value="Regresar" action="/menu/menuSecundario" />
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

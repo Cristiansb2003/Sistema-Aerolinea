@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset-UTF-S" />
+
+        <h:outputStylesheet name="/css/cssTable.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <div id="top">
+                <div id="top-hijo"> <ui:insert name="top"/></div> 
+            </div>
+
+            <div id="mensajes">
+                <ui:insert name="mensajes"/>
+            </div>
+
+
+            <div id="botones-padre">
+                <div id="botones">
+                    <ui:insert name="botones"/>
+                </div>
+            </div>
+            <div id="caja-padre">
+                <div id="caja">
+                    <div id="contenedor">
+                        <div id="derecha" class="hijo">
+                            <ui:insert name="centro"/>
+                        </div>
+
+                    </div>
+                </div> 
+            </div>
+
+        </h:form>
+    </h:body>
+</html>
+

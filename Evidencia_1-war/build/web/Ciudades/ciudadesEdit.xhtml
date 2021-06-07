@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Ciudades Edit</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/template.xhtml">
+            <ui:define name="top">
+                <h1>Editar ciudad</h1>  
+            </ui:define>
+            <ui:define name="izquierda">
+                <label>Nombre de la Ciudad</label><br/>
+                <h:inputText value="#{ciudadesController.ciudades.nombre}" validator="nombresValidator" required="true" requiredMessage="El campo Nombre de la Ciudad no puede ser nulo o estar vacío" maxlength="35"/>
+            </ui:define>
+            <ui:define name="centro">
+                <h:selectOneMenu value="#{ciudadesController.ciudades.estado}"
+                                 required="true"
+                                 requiredMessage="El estado es requerido">
+                    <f:selectItem itemLabel = "Selecciona un Estado"
+                                  noSelectionOption="true"
+                                  itemValue="0"/>
+                    <f:selectItems value="#{estadoController.findAll()}"
+                                   var = "e"
+                                   itemLabel="#{e.nombre}"/>
+                </h:selectOneMenu>
+            </ui:define>
+            <ui:define name="agregar">
+                <p:commandButton value="Guardar" action = "#{ciudadesController.update()}" onclick="PF('recargar').show()"/>
+                <p:commandButton value="Regresar" immediate="true" action="/menu/menuPrincipal"/> 
+            </ui:define>
+
+            <ui:define name="msj">
+                <h:messages/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

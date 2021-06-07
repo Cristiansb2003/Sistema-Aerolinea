@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-gap: 20px;
+                grid-template-rows: 100px 100px 100px;
+            }
+
+            .grid-container > div {
+                font-size: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .contenedor{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                top: 60px;
+            }
+            .top{
+                background-color: #565264;
+                border: 1px solid #ccc;
+                padding: 0 1rem;
+                margin: 1rem;
+            }
+
+            .top-hijo{
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align:center;
+                font-size: 19px;
+                color:#fff;
+            }
+            .ui-button{
+                width: 200px;
+                border: 3px solid #A6808C;
+
+            }
+            span.ui-button-text.ui-c {
+                background:   #ae8ca3;
+                color:#fff;
+            }
+
+            span.ui-button-text.ui-c:hover {
+                background:  #3d5a80;
+            }
+
+            body{
+                background:  #D6CFCB;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="top">
+                <div class="top-hijo">
+                    <h1>Aerolinea</h1>
+                </div>
+            </div>
+
+
+
+            <div class="contenedor"> 
+                <div class="grid-container">
+                    <div><p:commandButton  value="Paises" action="/Paises/PaisesList"/></div>
+                    <div><p:commandButton value="Aviones" action="/Aviones/avionesList"/></div>
+                    <div><p:commandButton value="Estados" action="/Estados/estadosList"/></div> 
+                    <div><p:commandButton value="Ciudades" action="/Ciudades/ciudadesList"/></div>
+                    <div><p:commandButton value="Vuelos" action="/Vuelos/vuelosList"/></div>
+                    <div> <p:commandButton value="Usuarios" action="/Usuarios/usuariosList"/></div>
+                </div>
+            </div>
+            <br/><br/><br/><br/>
+            <div class="top">
+                <div class="top-hijo">
+                    <p:commandButton value="Cerrar Sesion" action="/index"/>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

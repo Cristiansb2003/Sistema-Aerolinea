@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Paises List</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/tableTample.xhtml">
+            <ui:define name="top">
+                <h1> Paises</h1>
+            </ui:define>
+            <ui:define name="mensajes">
+                <h:messages/>
+            </ui:define>
+            <ui:define name="centro">
+                <h:dataTable id="tabla" value="#{paisesController.findAll()}" var="P">
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                            #{P.nombre}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Editar</f:facet>
+                        <p:commandButton value="Editar" action="#{paisesController.preparedEdit(P)}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Eliminar</f:facet>
+                        <p:commandButton value="Eliminar" action="#{paisesController.prepareDelete()}" onclick="PF('eli').show()" rendered="#{!paisesController.confirm}"/>
+                        <p:commandButton value="Si" rendered="#{paisesController.confirm}" onclick="PF('si').hide()" action="#{paisesController.delete(P)}"/>
+                        <p:commandButton value="No" rendered="#{paisesController.confirm}" onclick="PF('no').hide()" action="#{paisesController.minClean('PaisesList')}"/>
+                    </h:column>
+
+
+
+                </h:dataTable>
+            </ui:define>
+            <ui:define name="botones">
+                <p:commandButton value="Agregar Nuevo" action="#{paisesController.minClean('PaisesAlta')}" />
+                <p:commandButton value="Regresar" action="/menu/menuPrincipal" />
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

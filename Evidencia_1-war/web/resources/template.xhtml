@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <h:head>
+        <title>Facelet Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset-UTF-S" />
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <div id="top">
+                <div id="top-hijo"> <ui:insert name="top"/></div>
+
+            </div>
+            <div class="caja-padre">
+                <div class="caja">
+
+                    <div id="contenedor">
+                        <div id="izquierda" class="hijo">
+                            <ui:insert name="izquierda"/>
+                        </div>
+
+                        <div id="centro" class="hijo">
+                            <ui:insert name="centro"/>
+                        </div>
+                        <div id="derecha" class="hijo">
+                            <ui:insert name="derecha"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="agregar">
+                <ui:insert name="agregar"/>
+            </div>
+            <div id="msj">
+                <ui:insert name="msj"/>
+            </div>
+
+        </h:form>
+
+
+
+
+    </h:body>
+</html>
+
